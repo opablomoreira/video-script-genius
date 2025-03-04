@@ -21,14 +21,16 @@ export const generateScript = async ({
   additionalInstructions = ""
 }: GenerateScriptRequest): Promise<GenerateScriptResponse> => {
   try {
-    const prompt = `Create a video script about "${topic}". 
-      Tone: ${tone}
-      Target duration: ${duration} minutes
-      ${additionalInstructions ? `Additional instructions: ${additionalInstructions}` : ""}
+    const prompt = `Crie um roteiro de vídeo sobre "${topic}". 
+      Tom: ${tone}
+      Duração alvo: ${duration} minutos
+      ${additionalInstructions ? `Instruções adicionais: ${additionalInstructions}` : ""}
       
-      Format the script with clear sections for INTRO, MAIN CONTENT (with sub-sections if needed), and CONCLUSION.
-      Include suggested visuals, camera angles, or effects in [brackets].
-      Include timing estimates for each section.`;
+      Formate o roteiro com seções claras para INTRODUÇÃO, CONTEÚDO PRINCIPAL (com subseções se necessário) e CONCLUSÃO.
+      Inclua sugestões visuais, ângulos de câmera ou efeitos entre [colchetes].
+      Inclua estimativas de tempo para cada seção.
+      
+      Importante: Responda em português do Brasil.`;
 
     const response = await fetch(`${BASE_URL}:generateContent?key=${API_KEY}`, {
       method: "POST",
@@ -75,13 +77,13 @@ export const generateScript = async ({
     const data = await response.json();
     
     if (!response.ok) {
-      throw new Error(data.error?.message || "Failed to generate script");
+      throw new Error(data.error?.message || "Falha ao gerar roteiro");
     }
 
     if (data.promptFeedback?.blockReason) {
       return { 
         script: "", 
-        error: "Content was blocked due to safety settings. Please modify your request." 
+        error: "O conteúdo foi bloqueado devido às configurações de segurança. Por favor, modifique sua solicitação." 
       };
     }
 
@@ -91,10 +93,10 @@ export const generateScript = async ({
       script: scriptContent,
     };
   } catch (error) {
-    console.error("Error generating script:", error);
+    console.error("Erro ao gerar roteiro:", error);
     return {
       script: "",
-      error: error instanceof Error ? error.message : "An unknown error occurred",
+      error: error instanceof Error ? error.message : "Ocorreu um erro desconhecido",
     };
   }
 };

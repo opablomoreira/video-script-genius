@@ -16,7 +16,7 @@ interface ScriptFormProps {
 
 const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
   const [topic, setTopic] = useState("");
-  const [tone, setTone] = useState("professional");
+  const [tone, setTone] = useState("profissional");
   const [duration, setDuration] = useState("5");
   const [additionalInstructions, setAdditionalInstructions] = useState("");
 
@@ -36,11 +36,11 @@ const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="topic" className="text-sm font-medium">
-              Video Topic
+              Tema do Vídeo
             </Label>
             <Input
               id="topic"
-              placeholder="What is your video about?"
+              placeholder="Sobre o que é seu vídeo?"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               className="w-full transition-all focus:ring-2 focus:ring-primary/20"
@@ -51,38 +51,38 @@ const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="tone" className="text-sm font-medium">
-                Tone
+                Tom
               </Label>
               <Select value={tone} onValueChange={setTone}>
                 <SelectTrigger id="tone" className="w-full">
-                  <SelectValue placeholder="Select tone" />
+                  <SelectValue placeholder="Selecione o tom" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="professional">Professional</SelectItem>
+                  <SelectItem value="profissional">Profissional</SelectItem>
                   <SelectItem value="casual">Casual</SelectItem>
-                  <SelectItem value="enthusiastic">Enthusiastic</SelectItem>
-                  <SelectItem value="serious">Serious</SelectItem>
-                  <SelectItem value="humorous">Humorous</SelectItem>
-                  <SelectItem value="educational">Educational</SelectItem>
+                  <SelectItem value="entusiasmado">Entusiasmado</SelectItem>
+                  <SelectItem value="sério">Sério</SelectItem>
+                  <SelectItem value="humorístico">Humorístico</SelectItem>
+                  <SelectItem value="educativo">Educativo</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="duration" className="text-sm font-medium">
-                Duration (minutes)
+                Duração (minutos)
               </Label>
               <Select value={duration} onValueChange={setDuration}>
                 <SelectTrigger id="duration" className="w-full">
-                  <SelectValue placeholder="Select duration" />
+                  <SelectValue placeholder="Selecione a duração" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">1 minute</SelectItem>
-                  <SelectItem value="3">3 minutes</SelectItem>
-                  <SelectItem value="5">5 minutes</SelectItem>
-                  <SelectItem value="10">10 minutes</SelectItem>
-                  <SelectItem value="15">15 minutes</SelectItem>
-                  <SelectItem value="20">20 minutes</SelectItem>
+                  <SelectItem value="1">1 minuto</SelectItem>
+                  <SelectItem value="3">3 minutos</SelectItem>
+                  <SelectItem value="5">5 minutos</SelectItem>
+                  <SelectItem value="10">10 minutos</SelectItem>
+                  <SelectItem value="15">15 minutos</SelectItem>
+                  <SelectItem value="20">20 minutos</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -90,11 +90,11 @@ const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
 
           <div className="space-y-2">
             <Label htmlFor="additionalInstructions" className="text-sm font-medium">
-              Additional Instructions (Optional)
+              Instruções Adicionais (Opcional)
             </Label>
             <Textarea
               id="additionalInstructions"
-              placeholder="Any specific requirements for your script..."
+              placeholder="Algum requisito específico para seu roteiro..."
               value={additionalInstructions}
               onChange={(e) => setAdditionalInstructions(e.target.value)}
               className="min-h-[100px] transition-all focus:ring-2 focus:ring-primary/20"
@@ -109,10 +109,10 @@ const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating Script...
+                Gerando Roteiro...
               </>
             ) : (
-              "Generate Script"
+              "Gerar Roteiro"
             )}
           </Button>
         </form>

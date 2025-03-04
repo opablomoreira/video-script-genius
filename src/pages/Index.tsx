@@ -24,11 +24,11 @@ const Index = () => {
       setScriptContent(result.script);
       setShowOutput(true);
       if (result.script) {
-        toast.success("Your script has been generated successfully!");
+        toast.success("Seu roteiro foi gerado com sucesso!");
       }
     } catch (error) {
-      toast.error("Failed to generate script. Please try again.");
-      console.error("Error:", error);
+      toast.error("Falha ao gerar roteiro. Por favor, tente novamente.");
+      console.error("Erro:", error);
     } finally {
       setIsLoading(false);
     }
@@ -42,9 +42,9 @@ const Index = () => {
         <div className="mt-8 space-y-6">
           <section className="grid grid-cols-1 gap-6">
             <div className="space-y-4">
-              <h2 className="text-xl font-medium">Create Your Script</h2>
+              <h2 className="text-xl font-medium">Crie Seu Roteiro</h2>
               <p className="text-muted-foreground">
-                Fill in the form below to generate a professional video script tailored to your needs.
+                Preencha o formulário abaixo para gerar um roteiro de vídeo profissional adaptado às suas necessidades.
               </p>
             </div>
             
@@ -65,9 +65,9 @@ const Index = () => {
                 <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-4">
                   <span className="text-primary font-medium">1</span>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Define Your Topic</h3>
+                <h3 className="text-lg font-medium mb-2">Defina Seu Tema</h3>
                 <p className="text-muted-foreground text-sm">
-                  Start by entering the main topic of your video and essential parameters.
+                  Comece inserindo o tema principal do seu vídeo e os parâmetros essenciais.
                 </p>
               </div>
               
@@ -75,9 +75,9 @@ const Index = () => {
                 <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-4">
                   <span className="text-primary font-medium">2</span>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Generate Script</h3>
+                <h3 className="text-lg font-medium mb-2">Gere o Roteiro</h3>
                 <p className="text-muted-foreground text-sm">
-                  Our AI creates a structured script with timing and visual cues included.
+                  Nossa IA cria um roteiro estruturado com tempos e dicas visuais incluídas.
                 </p>
               </div>
               
@@ -85,9 +85,9 @@ const Index = () => {
                 <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-4">
                   <span className="text-primary font-medium">3</span>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Export & Use</h3>
+                <h3 className="text-lg font-medium mb-2">Exporte e Use</h3>
                 <p className="text-muted-foreground text-sm">
-                  Download your script or copy it to your clipboard and start creating.
+                  Baixe seu roteiro ou copie para a área de transferência e comece a criar.
                 </p>
               </div>
             </div>
@@ -96,7 +96,7 @@ const Index = () => {
         
         <footer className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-sm text-muted-foreground">
-            Video Script Creator © {new Date().getFullYear()}. Powered by Gemini AI.
+            Criador de Roteiros de Vídeo © {new Date().getFullYear()}. Desenvolvido com Gemini AI.
           </p>
         </footer>
       </div>

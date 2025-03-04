@@ -21,7 +21,7 @@ const ScriptOutput: React.FC<ScriptOutputProps> = ({ script, isVisible }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(script);
     setCopied(true);
-    toast.success("Script copied to clipboard");
+    toast.success("Roteiro copiado para a área de transferência");
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -29,24 +29,24 @@ const ScriptOutput: React.FC<ScriptOutputProps> = ({ script, isVisible }) => {
     const element = document.createElement("a");
     const file = new Blob([script], { type: "text/plain" });
     element.href = URL.createObjectURL(file);
-    element.download = "video-script.txt";
+    element.download = "roteiro-video.txt";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    toast.success("Script downloaded successfully");
+    toast.success("Roteiro baixado com sucesso");
   };
 
-  // Function to format the script with proper styling
+  // Função para formatar o roteiro com estilo adequado
   const formatScript = (text: string) => {
-    // Replace [text in brackets] with styled version
+    // Substitui [texto entre colchetes] com versão estilizada
     const styledText = text.replace(
       /\[(.*?)\]/g,
       '<span class="text-blue-500 font-medium">[$1]</span>'
     );
 
-    // Make section headers bold
+    // Torna os cabeçalhos de seção em negrito
     const withHeaders = styledText.replace(
-      /(INTRO|MAIN CONTENT|CONCLUSION|OUTRO)([^\n]*)/gi,
+      /(INTRODUÇÃO|CONTEÚDO PRINCIPAL|CONCLUSÃO|ENCERRAMENTO)([^\n]*)/gi,
       '<span class="font-bold text-primary">$1$2</span>'
     );
 
@@ -56,8 +56,8 @@ const ScriptOutput: React.FC<ScriptOutputProps> = ({ script, isVisible }) => {
   return (
     <Card className="w-full mt-6 border border-gray-100 dark:border-gray-800 animate-slide-up shadow-sm">
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-semibold">Your Video Script</CardTitle>
-        <CardDescription>Ready to use in your next video</CardDescription>
+        <CardTitle className="text-lg font-semibold">Seu Roteiro de Vídeo</CardTitle>
+        <CardDescription>Pronto para ser usado no seu próximo vídeo</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex justify-end space-x-2 mb-4">
@@ -70,12 +70,12 @@ const ScriptOutput: React.FC<ScriptOutputProps> = ({ script, isVisible }) => {
             {copied ? (
               <>
                 <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                Copied
+                Copiado
               </>
             ) : (
               <>
                 <Copy className="mr-2 h-4 w-4" />
-                Copy
+                Copiar
               </>
             )}
           </Button>
@@ -86,7 +86,7 @@ const ScriptOutput: React.FC<ScriptOutputProps> = ({ script, isVisible }) => {
             onClick={handleDownload}
           >
             <Download className="mr-2 h-4 w-4" />
-            Download
+            Baixar
           </Button>
         </div>
         <div 

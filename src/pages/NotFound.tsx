@@ -9,7 +9,7 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error(
-      "404 Error: User attempted to access non-existent route:",
+      "Erro 404: Usuário tentou acessar rota inexistente:",
       location.pathname
     );
   }, [location.pathname]);
@@ -19,12 +19,12 @@ const NotFound = () => {
       <div className="text-center px-4 animate-fade-in">
         <h1 className="text-7xl font-bold mb-4 text-primary">404</h1>
         <p className="text-xl text-muted-foreground mb-8">
-          The page you're looking for doesn't exist.
+          A página que você está procurando não existe.
         </p>
         <Button asChild className="transition-all">
           <a href="/">
             <Home className="mr-2 h-4 w-4" />
-            Return to Home
+            Voltar para Início
           </a>
         </Button>
       </div>

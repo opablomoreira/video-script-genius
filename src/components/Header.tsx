@@ -11,10 +11,10 @@ const Header: React.FC = () => {
             <PenLine className="h-6 w-6 text-primary" />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-            Video Script Creator
+            Criador de Roteiros de Vídeo
           </h1>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Transform your ideas into professional video scripts in seconds using advanced AI technology.
+            Transforme suas ideias em roteiros profissionais de vídeo em segundos usando tecnologia avançada de IA.
           </p>
         </div>
       </div>
