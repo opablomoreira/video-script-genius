@@ -1,6 +1,6 @@
 
 const API_KEY = "AIzaSyCkPXVlfWnXpQWg-DpT5Qluez_ijd5OCeU";
-const BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro";
+const BASE_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro";
 
 export interface GenerateScriptRequest {
   topic: string;
