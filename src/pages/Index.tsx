@@ -1,15 +1,21 @@
 
 import React, { useState } from "react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import ScriptForm from "@/components/ScriptForm";
 import ScriptOutput from "@/components/ScriptOutput";
 import { generateScript, GenerateScriptRequest } from "@/lib/gemini-api";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { LogIn, UserPlus } from "lucide-react";
 
 const Index = () => {
   const [scriptContent, setScriptContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showOutput, setShowOutput] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const handleGenerateScript = async (data: GenerateScriptRequest) => {
     setIsLoading(true);
@@ -48,15 +54,38 @@ const Index = () => {
               </p>
             </div>
             
-            <ScriptForm 
-              onSubmit={handleGenerateScript} 
-              isLoading={isLoading} 
-            />
-            
-            <ScriptOutput 
-              script={scriptContent} 
-              isVisible={showOutput} 
-            />
+            {isAuthenticated ? (
+              <>
+                <ScriptForm 
+                  onSubmit={handleGenerateScript} 
+                  isLoading={isLoading} 
+                />
+                
+                <ScriptOutput 
+                  script={scriptContent} 
+                  isVisible={showOutput} 
+                />
+              </>
+            ) : (
+              <div className="glass-panel p-8 space-y-6 animate-fade-in">
+                <div className="text-center">
+                  <h3 className="text-xl font-medium mb-2">Faça login para criar roteiros</h3>
+                  <p className="text-muted-foreground mb-6">
+                    É necessário ter uma conta para utilizar o gerador de roteiros.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button onClick={() => navigate("/login")} className="w-full sm:w-auto">
+                      <LogIn className="mr-2 h-4 w-4" />
+                      Entrar
+                    </Button>
+                    <Button onClick={() => navigate("/cadastro")} variant="outline" className="w-full sm:w-auto">
+                      <UserPlus className="mr-2 h-4 w-4" />
+                      Cadastrar
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
           </section>
           
           <section className="py-8 mt-8">
