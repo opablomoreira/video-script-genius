@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
             <img 
               src="/lovable-uploads/a0bf4dfc-7386-4b32-a499-b3a4f7262070.png" 
               alt="Rôterizei Logo" 
-              className="h-8 md:h-10"
+              className="h-16 md:h-20"
             />
           </Link>
           
