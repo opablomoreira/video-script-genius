@@ -21,16 +21,22 @@ export const generateScript = async ({
   additionalInstructions = ""
 }: GenerateScriptRequest): Promise<GenerateScriptResponse> => {
   try {
-    const prompt = `Crie um roteiro de vídeo sobre "${topic}". 
+    const prompt = `Crie um roteiro de vídeo sobre "${topic}" em formato de tabela com 3 colunas: CENA, ÁUDIO (locução off) e IMAGEM (ilustração/animação).
+      
       Tom: ${tone}
       Duração alvo: ${duration} minutos
       ${additionalInstructions ? `Instruções adicionais: ${additionalInstructions}` : ""}
       
-      Formate o roteiro com seções claras para INTRODUÇÃO, CONTEÚDO PRINCIPAL (com subseções se necessário) e CONCLUSÃO.
-      Inclua sugestões visuais, ângulos de câmera ou efeitos entre [colchetes].
-      Inclua estimativas de tempo para cada seção.
+      Estruture o roteiro como uma tabela com os seguintes elementos:
+      - Uma linha de cabeçalho com CENA | ÁUDIO (locução off) | IMAGEM (ilustração/animação)
+      - Divida o conteúdo em cenas numeradas (1, 2, 3, etc.)
+      - Para cada cena, indique o texto para locução na coluna ÁUDIO
+      - Para cada cena, descreva o que deve aparecer na tela na coluna IMAGEM
+      - O roteiro deve ter início, meio e fim claros
+      - Inclua 5-8 cenas no total
+      - Cada cena deve ser breve, permitindo que o roteiro inteiro caiba na duração especificada
       
-      Importante: Responda em português do Brasil.`;
+      Importante: Responda em português do Brasil com o roteiro completo em formato de tabela.`;
 
     const response = await fetch(`${BASE_URL}:generateContent?key=${API_KEY}`, {
       method: "POST",
@@ -89,8 +95,17 @@ export const generateScript = async ({
 
     const scriptContent = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
     
+    // Formata o roteiro como um título seguido de uma tabela
+    const formattedScript = `${topic.toUpperCase()}
+ROTEIRO v.1 / ${new Date().toLocaleDateString('pt-BR')} / Duração estimada: ${duration} minutos
+
+${scriptContent}
+
+---
+Gerado por Criador de Roteiros de Vídeo usando IA`;
+    
     return {
-      script: scriptContent,
+      script: formattedScript,
     };
   } catch (error) {
     console.error("Erro ao gerar roteiro:", error);

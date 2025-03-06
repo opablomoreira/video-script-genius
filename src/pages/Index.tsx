@@ -8,7 +8,7 @@ import ScriptOutput from "@/components/ScriptOutput";
 import { generateScript, GenerateScriptRequest } from "@/lib/gemini-api";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { LogIn, UserPlus } from "lucide-react";
+import { LogIn, UserPlus, FileDown } from "lucide-react";
 
 const Index = () => {
   const [scriptContent, setScriptContent] = useState("");
@@ -40,6 +40,37 @@ const Index = () => {
     }
   };
 
+  const handleDownloadTemplateOnly = () => {
+    const templateContent = `TÍTULO DO PROJETO
+ROTEIRO v.1 / SUA EMPRESA / DURAÇÃO ESTIMADA
+
+---------------------------------------------------
+
+CENA | ÁUDIO (locução off) | IMAGEM (ilustração / animação)
+-----|-------------------|---------------------------
+1 | [Insira aqui o texto para a narração da cena 1] | [Descreva o que deve aparecer na tela durante a cena 1]
+2 | [Insira aqui o texto para a narração da cena 2] | [Descreva o que deve aparecer na tela durante a cena 2]
+3 | [Insira aqui o texto para a narração da cena 3] | [Descreva o que deve aparecer na tela durante a cena 3]
+4 | [Insira aqui o texto para a narração da cena 4] | [Descreva o que deve aparecer na tela durante a cena 4]
+5 | [Insira aqui o texto para a narração da cena 5] | [Descreva o que deve aparecer na tela durante a cena 5]
+
+---------------------------------------------------
+
+OBSERVAÇÕES ADICIONAIS:
+- [Adicione notas sobre estilo visual]
+- [Adicione notas sobre tom de narração]
+- [Adicione outras instruções relevantes]`;
+
+    const element = document.createElement("a");
+    const file = new Blob([templateContent], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "modelo-roteiro.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success("Modelo de roteiro baixado com sucesso");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -56,6 +87,16 @@ const Index = () => {
             
             {isAuthenticated ? (
               <>
+                <div className="flex justify-end">
+                  <Button 
+                    variant="outline" 
+                    onClick={handleDownloadTemplateOnly}
+                    className="flex items-center gap-2"
+                  >
+                    <FileDown className="h-4 w-4" />
+                    Baixar Modelo de Roteiro
+                  </Button>
+                </div>
                 <ScriptForm 
                   onSubmit={handleGenerateScript} 
                   isLoading={isLoading} 
