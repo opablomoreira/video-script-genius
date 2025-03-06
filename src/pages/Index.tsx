@@ -166,7 +166,7 @@ OBSERVAÇÕES ADICIONAIS:
         
         <footer className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-sm text-muted-foreground">
-            Criador de Roteiros de Vídeo © {new Date().getFullYear()}. Desenvolvido com Gemini AI.
+            Rôterizei © {new Date().getFullYear()}. Desenvolvido com Gemini AI.
           </p>
         </footer>
       </div>

@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-import { PenLine, LogOut, LogIn, UserPlus } from "lucide-react";
+import { LogOut, LogIn, UserPlus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,8 +22,11 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <PenLine className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl">Criador de Roteiros</span>
+            <img 
+              src="/lovable-uploads/a0bf4dfc-7386-4b32-a499-b3a4f7262070.png" 
+              alt="Rôterizei Logo" 
+              className="h-8 md:h-10"
+            />
           </Link>
           
           <div className="flex items-center space-x-4">

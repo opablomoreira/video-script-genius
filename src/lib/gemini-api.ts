@@ -1,4 +1,3 @@
-
 const API_KEY = "AIzaSyCkPXVlfWnXpQWg-DpT5Qluez_ijd5OCeU";
 const BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash";
 
@@ -102,7 +101,7 @@ ROTEIRO v.1 / ${new Date().toLocaleDateString('pt-BR')} / Duração estimada: ${
 ${scriptContent}
 
 ---
-Gerado por Criador de Roteiros de Vídeo usando IA`;
+Gerado por Rôterizei usando IA`;
     
     return {
       script: formattedScript,
