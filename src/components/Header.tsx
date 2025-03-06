@@ -10,7 +10,7 @@ const Header: React.FC = () => {
             <img 
               src="/lovable-uploads/a0bf4dfc-7386-4b32-a499-b3a4f7262070.png" 
               alt="Rôterizei Logo" 
-              className="h-16 md:h-20"
+              className="h-32 md:h-40"
             />
           </div>
           <p className="text-muted-foreground max-w-lg mx-auto">
